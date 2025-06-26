@@ -1,24 +1,29 @@
 import React from "react";
 import "./Skill.css";
 
+// ✅ Import images instead of using string paths
+import cplusImg from "../assets/Cplus.webp";
+import dataImg from "../assets/Data.jpg";
+import techImg from "../assets/Tech.webp";
+
 const skillsData = [
   {
     title: "Programming Languages",
     description: "Proficient in multiple programming languages for software development.",
-    image: "src/assets/Cplus.webp",
+    image: cplusImg,
     tags: ["Python", "C++", "JavaScript", "SQL"]
   },
   {
     title: "Data Analysis",
     description: "Skilled in analyzing data, using libraries and tools for insights.",
-    image: "src/assets/Data.jpg",
+    image: dataImg,
     tags: ["Pandas", "NumPy", "Power Bi", "Excel"]
   },
   {
     title: "Technologies",
     description: "Experienced with modern web, database, and version control tools.",
-    image: "src/assets/Tech.webp",
-    tags: ["React", "Git", "Mysql", "Tkinter","AI"]
+    image: techImg,
+    tags: ["React", "Git", "Mysql", "Tkinter", "AI"]
   }
 ];
 

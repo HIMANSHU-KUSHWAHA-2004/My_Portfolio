@@ -1,48 +1,56 @@
 import React, { useState } from "react";
 import "./Projects.css";
 
+// Correct image imports
+import flappyImg from "../assets/flappy.png";
+import stockImg from "../assets/stock.png";
+import bankImg from "../assets/bank.png";
+import musicImg from "../assets/music.png";
+import sudokuImg from "../assets/sudo.webp";
+import nofapImg from "../assets/Nofap.png";
+
 const projects = [
   {
     title: "Flappy Bird Game Clone",
     description:
       "A Python-based Flappy Bird game developed using Tkinter and Pygame. Features smooth animations, collision detection, and increasing difficulty over time for an engaging experience.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/flappy_bird.git",
-    image: "src/assets/flappy.png",
+    image: flappyImg,
   },
   {
     title: "Stock Portfolio Tracker",
     description:
       "A Python application that uses yfinance and public APIs to track real-time stock performance, portfolio gains/losses, and visualize holdings with graphs and summaries.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/CodeAlpha_Task_2_intern.git",
-    image: "src/assets/stock.png",
+    image: stockImg,
   },
   {
     title: "Band Management System",
     description:
       "A terminal-based management system built in Python that stores and manages band member info, schedules, and performances using structured JSON data.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/Bank_management_system.git",
-    image: "src/assets/bank.png",
+    image: bankImg,
   },
   {
     title: "Python Music Player",
     description:
       "A fully functional desktop music player app built with Tkinter and Pygame. Supports audio file loading, play/pause/stop controls, and basic UI interactions.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/musix.git",
-    image: "src/assets/music.png",
+    image: musicImg,
   },
   {
     title: "Sudoku Solver",
     description:
       "A C++ program that solves Sudoku puzzles using backtracking algorithm. Efficiently finds a valid solution for any solvable grid configuration.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/Prodigy_Task_4_Intern.git",
-    image: "src/assets/sudo.webp",
+    image: sudokuImg,
   },
   {
     title: "NoFap Streak Tracker",
     description:
       "A streak-tracking productivity app developed using React for the frontend and FastAPI for the backend. Includes calendar marking, certificate generation, and theme toggling.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/NoFap_Project.git",
-    image: "src/assets/Nofap.png",
+    image: nofapImg,
   },
 ];
 
