@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #000000; /* Midnight Blue */
+  color: #ffffff; /* Soft white-blue text */
+}
+
+.app {
+  text-align: center;
+  padding: 2rem;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+body.dark .toggle-btn {
+  background-color: #000000;
+  color: #e0e7ff;
+}

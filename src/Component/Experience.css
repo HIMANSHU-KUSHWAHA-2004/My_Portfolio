@@ -1,0 +1,142 @@
+/* Light Theme */
+body {
+  background-color: white;
+  color: #111;
+}
+
+.experience-section {
+  padding: 2rem 0rem;
+  background-color: white;
+  color: #111;
+}
+
+.experience-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 5rem;
+  color: black;
+}
+
+.experience-timeline {
+  position: relative;
+  margin: 0 auto;
+  padding-left: 30px;
+  border-left: 3px solid #3f51b5;
+  max-width: 800px;
+}
+
+.experience-entry {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 1rem;
+}
+
+.experience-entry::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  border: 2px solid white;
+}
+
+.experience-role {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c387e;
+}
+
+.experience-company {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #616161;
+}
+
+.experience-duration {
+  font-size: 1rem;
+  color: #9e9e9e;
+}
+
+.experience-desc {
+  font-size: 1.2rem;
+  color: #444;
+  margin-top: 0.5rem;
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: #000;
+  color: #e0e7ff;
+}
+
+body.dark .experience-section {
+  background-color: #000;
+  color: #e0e7ff;
+}
+
+body.dark .experience-title {
+  color: white;
+}
+
+body.dark .experience-timeline {
+  border-left: 3px solid #81d4fa;
+}
+
+body.dark .experience-entry::before {
+  background-color: #81d4fa;
+  border: 2px solid #000;
+}
+
+body.dark .experience-role {
+  color: #ffb74d;
+}
+
+body.dark .experience-company {
+  color: #cfd8dc;
+}
+
+body.dark .experience-duration {
+  color: #b0bec5;
+}
+
+body.dark .experience-desc {
+  color: #b0bec5;
+}
+@media screen and (max-width: 500px) {
+  .experience-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .experience-role {
+    font-size: 1.3rem;
+  }
+
+  .experience-company {
+    font-size: 1.1rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .experience-duration {
+    font-size: 0.95rem;
+  }
+
+  .experience-desc {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .experience-timeline {
+    padding-left: 20px;
+    border-left-width: 2px;
+  }
+
+  .experience-entry::before {
+    width: 10px;
+    height: 10px;
+    left: -7px;
+  }
+}

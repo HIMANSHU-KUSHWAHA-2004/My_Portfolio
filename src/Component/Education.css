@@ -1,0 +1,257 @@
+.edu-section {
+  padding: 0 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.edu-title {
+  text-align: center;
+  font-size: 2.5rem;
+  padding-top: 100px;
+  margin-bottom: 8rem;
+  color: var(--accent-color);
+}
+
+.edu-timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.edu-center-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: white;
+  transform: translateX(-50%);
+  z-index: 1;
+  border-radius: 2px;
+  transition: left 0.3s ease;
+}
+
+.edu-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.edu-row.left {
+  flex-direction: row;
+}
+
+.edu-row.right {
+  flex-direction: row-reverse;
+}
+
+.edu-box-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.edu-box {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 400px;
+  box-shadow: 0 0 12px rgb(56, 56, 56);
+  z-index: 2;
+  width: 100%;
+  h3{
+    color: #81d4fa;
+  }
+  h4{
+    color:  #bdbdbd;
+  }
+  span{
+    color: #ffb74d;
+  }
+  
+}
+
+.edu-horizontal-line {
+  width: 90px;
+  height: 2px;
+  background-color: white;
+  z-index: 2;
+  margin: 0 60px;
+  flex-shrink: 0;
+}
+
+.edu-year {
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .edu-timeline {
+    padding-left: 0;
+  }
+
+  .edu-center-line,
+  .edu-horizontal-line {
+    display: none;
+  }
+
+  .edu-row {
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+  }
+
+  .edu-box-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .edu-title{
+    margin-bottom: 2rem;
+  }
+
+  .edu-box {
+    width: 90%;
+    padding: 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .edu-box {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .edu-timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  
+.edu-timeline::before {
+  content: "";
+  position: absolute;
+  top: 82px;
+  height: 500px;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background-color: white;
+  z-index: 1;
+}
+
+.edu-box-wrapper::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: -24px; /* aligns with line at 20px */
+  top: 50%; /* center vertically with the block */
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+  /* 🔹 Second vertical line in center (optional spine) */
+  /* .edu-timeline::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 2px;
+    background-color: #000000;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+    } */
+
+
+  .edu-row {
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .edu-box-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+  }
+
+  /* .edu-box-wrapper::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: -24px;
+    top: 75px;
+    z-index: 2;
+  } */
+
+  .edu-box {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    width: calc(100% - 50px);
+    text-align: left;
+  }
+
+
+  .edu-center-line,
+  .edu-horizontal-line {
+    display: none;
+  }
+
+  .edu-title {
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+@media 
+(max-width: 450px) {
+ .edu-timeline::before {
+  top: 90px;
+  height: 600px;
+}
+}
+@media 
+(max-width: 400px) {
+ .edu-timeline::before {
+  top: 70px;
+  height: 650px;
+}
+}
+@media 
+(max-width: 370px) {
+ .edu-timeline::before {
+  top: 100px;
+  height: 800px;
+}
+}
+@media 
+(max-width: 350px) {
+ .edu-timeline::before {
+  top: 100px;
+  height: 900px;
+}
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .edu-box {
+    text-align: center !important;
+  }
+}

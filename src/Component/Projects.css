@@ -1,0 +1,183 @@
+/* General Reset for Horizontal Overflow */
+body {
+    overflow-x: hidden;
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 2rem 0rem;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.projects-title {
+    font-size: 2.5rem;
+    color: black;
+    margin-bottom: 4rem;
+}
+
+/* Slider Layout */
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+}
+
+/* Card Styling */
+.project-card {
+    background-color: #181c2f;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-img {
+  width: 100%;
+  height: 250px;
+  background-color: #181c2f;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.project-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Show full image without cropping */
+}
+
+
+.project-card h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.project-card a {
+    color: #3f51b5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+/* Slider Buttons */
+.slider-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #3f51b5;
+    transition: color 0.3s;
+}
+
+.slider-btn:hover {
+    color: #1a237e;
+}
+
+/* Dark Theme Overrides */
+body.dark .projects-section {
+    background-color: #000;
+    color: #e0e7ff;
+}
+
+body.dark .projects-title {
+    color: white;
+}
+
+body.dark .project-card {
+    background-color: #181c2f;
+    color: #e0e7ff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .project-card h3 {
+    color: #ffb74d;
+}
+
+body.dark .project-card p,
+body.dark .project-card a {
+    color: #e0e7ff;
+}
+
+body.dark .slider-btn {
+    color: #81d4fa;
+}
+
+/* Responsive Layout for Small Screens */
+@media screen and (max-width: 500px) {
+    .projects-section {
+        padding: 2rem 0;
+    }
+
+    .slider-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .project-img {
+        height: 180px;
+    }
+
+    .project-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-card p {
+        font-size: 0.95rem;
+    }
+
+    .slider-btn {
+        font-size: 1.8rem;
+    }
+}
+.github-btn {
+  background-color: rgb(117, 117, 255);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.github-btn a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.github-btn:hover {
+  background-color: #303f9f;
+}
+

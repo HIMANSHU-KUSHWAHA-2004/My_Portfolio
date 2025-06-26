@@ -1,0 +1,129 @@
+/* Section Wrapper */
+.home-section {
+  padding: 6rem 1rem 5rem 1rem ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container with Image + Info */
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Left: Profile Image */
+.home-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Right: Name + Bio */
+/* Right: Name + Bio */
+.home-right {
+  flex: 2;
+  color: inherit;
+  text-align: left;
+  max-width: 500px; /* ✅ Compress width */
+  padding: 0 1rem;
+}
+
+
+.home-right h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-right h2 {
+  font-size: 1.2rem;
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.home-right p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Social Icons Centered */
+.social-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+  color: #0077b5;
+}
+
+/* Dark Mode Overrides */
+body.dark .home-right h2 {
+  color: #a0aec0;
+}
+
+body.dark .social-links a:hover {
+  color: #63b3ed;
+  /* Lighter blue on hover for dark theme */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-right {
+    text-align: center;
+    margin: 0 auto; /* 👈 Optional centering if needed */
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+
+@media (max-width : 482px) {
+  .profile-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .home-right h1 {
+    font-size: 2rem;
+
+  }
+  .home-section {
+  padding: 4rem 1rem 2rem 1rem ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+}
