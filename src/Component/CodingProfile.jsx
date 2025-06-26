@@ -4,7 +4,7 @@ import "./CodingProfile.css";
 const profiles = [
   {
     name: "LeetCode",
-    image: "src/assets/leet.webp",
+    image: "../assets/leet.webp",
     description: "Used for strengthening understanding of data structures, algorithms, and classical problem-solving.",
     link: "https://leetcode.com/u/HimanshuKushwaha2004/",
   },
