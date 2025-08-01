@@ -1,5 +1,5 @@
 .contact-section {
-  padding: 4rem 0rem;
+  padding: 2rem 0rem;
   background-color: white;
   color: black;
   text-align: center;
@@ -110,7 +110,7 @@
 
 /* DARK THEME */
 body.dark .contact-section {
-  background-color: #000;
+  background-color: transparent;
   color: #e0e7ff;
 }
 

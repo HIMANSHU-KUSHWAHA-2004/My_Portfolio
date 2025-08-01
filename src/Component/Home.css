@@ -1,6 +1,6 @@
 /* Section Wrapper */
 .home-section {
-  padding: 6rem 1rem 5rem 1rem ;
+  padding : 0rem 1rem ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,11 +109,10 @@ body.dark .social-links a:hover {
   }
 }
 
-
 @media (max-width : 482px) {
   .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
 
   .home-right h1 {
@@ -121,7 +120,7 @@ body.dark .social-links a:hover {
 
   }
   .home-section {
-  padding: 4rem 1rem 2rem 1rem ;
+  padding: 0rem 1rem 0rem 1rem ;
   display: flex;
   flex-direction: column;
   align-items: center;

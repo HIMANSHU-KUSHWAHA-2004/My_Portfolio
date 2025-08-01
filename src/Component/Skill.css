@@ -51,7 +51,7 @@
 
 .skill-content h3 {
   font-size: 1.3rem;
-  color: #ffffff;
+  color: #ffb74d;
   margin-bottom: 0.5rem;
 }
 
@@ -66,6 +66,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.6rem;
+  width: 245px;
 }
 
 .skill-tag {
@@ -77,7 +78,7 @@
 }
 @media screen and (max-width: 500px) {
   .skills-section {
-    padding: 2rem 1rem;
+    padding: 0rem 1rem;
   }
 
   .skill-card {
@@ -90,15 +91,15 @@
   }
 
   .skill-content h3 {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
   .skill-content p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .skill-tag {
-    font-size: 0.85rem;
+    font-size: 1rem;
     padding: 5px 10px;
   }
   .skill-card {

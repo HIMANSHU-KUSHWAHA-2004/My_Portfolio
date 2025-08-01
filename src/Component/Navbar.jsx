@@ -31,7 +31,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-left">
-          <div className="logo">Himanshu Kushwaha</div>
+              <div className="logo">&lt;/Himanshu&gt;</div>
         </div>
 
         <ul className="nav-links">

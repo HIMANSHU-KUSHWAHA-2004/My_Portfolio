@@ -8,14 +8,18 @@ import Experience from "./Component/Experience";
 import Projects from "./Component/Projects";
 import Contacts from "./Component/Contacts";
 import Footer from "./Component/Footer";
+import BackgroundEffect from "./Component/BackgroundEffect";
 import "./App.css";
 
 function App() {
   return (
     <>
+      <BackgroundEffect />
       <Navbar />
       <div className="app">
-        <Home /> {/* ✅ replaced inline section with component */}
+        <section id="home" className="section">
+          <Home />
+        </section>
         <section id="about" className="section">
           <About />
         </section>
@@ -26,20 +30,18 @@ function App() {
           <Skill />
         </section>
         <section id="coding-profiles" className="section">
-          <CodingProfiles/>
+          <CodingProfiles />
         </section>
         <section id="experience" className="section">
-          <Experience/>
+          <Experience />
         </section>
         <section id="projects" className="section">
-          <Projects/>
+          <Projects />
         </section>
         <section id="contact-me" className="section">
-         <Contacts/>
+          <Contacts />
         </section>
-        <section id="contact-me" className="section">
-         <Footer/>
-        </section>
+        <Footer />
       </div>
     </>
   );

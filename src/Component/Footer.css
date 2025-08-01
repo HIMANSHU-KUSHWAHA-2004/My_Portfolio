@@ -32,7 +32,7 @@
 
 /* Dark Theme Support */
 body.dark .footer {
-  background-color: black;
+  background-color: transparent;
   color: #ccc;
 }
 

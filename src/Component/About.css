@@ -1,5 +1,5 @@
 .about-section {
-    padding: 3rem 1rem;
+    padding: 1rem 1rem;
     background-color: transparent;
     color: inherit;
     margin-left: 200px;
@@ -94,6 +94,8 @@ body.dark .resume-download-btn:hover {
     .about-container {
         flex-direction: column-reverse;
         text-align: center;
+        margin-bottom: 10px;
+
     }
     .about-heading{margin-right: 0;}
     .about-text {

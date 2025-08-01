@@ -1,47 +1,16 @@
-
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: white;
-  color: black;
-  transition: background-color 0.3s, color 0.3s;
-  scroll-behavior: smooth;
-}
-/* Light Theme */
-
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-section {
-  margin: 0;
-  padding: 2rem 0rem;
-  /* border: 1px solid white; */
-  background-color: inherit;
-  box-shadow: none;
-}
-
-body.dark {
-  background-color: #000000;
-  color: #e0e7ff;
-}
-
-/* App container */
+/* App.css: Minimal overrides */
 .app {
-  padding: 1rem;
   text-align: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* Section layout */
 .section {
-  padding: 2rem 0rem;
-  border: none; /* ✅ removed the separator line */
+  padding: 2rem 0;
+  border: none;
+  background-color: transparent; 
+  box-shadow: none;
 }
 
 .section h1 {

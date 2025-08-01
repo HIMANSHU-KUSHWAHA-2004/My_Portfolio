@@ -17,7 +17,7 @@ const skillsData = [
     title: "Data Analysis",
     description: "Skilled in analyzing data, using libraries and tools for insights.",
     image: dataImg,
-    tags: ["Pandas", "NumPy", "Power Bi", "Excel"]
+    tags: ["Pandas", "NumPy","Matlotlib","Seaborn", "Power Bi", "Excel"]
   },
   {
     title: "Technologies",
