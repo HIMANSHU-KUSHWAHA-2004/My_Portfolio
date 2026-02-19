@@ -237,6 +237,19 @@
   color: var(--accent-primary) !important;
 }
 
+:root[data-theme="dark"] .section h1,
+:root[data-theme="dark"] .section h2,
+:root[data-theme="dark"] .section h3 {
+  color: #ffbd73 !important;
+  text-shadow: 0 0 18px rgba(255, 189, 115, 0.2);
+}
+
+:root[data-theme="dark"] .edu-title {
+  background: none !important;
+  -webkit-text-fill-color: #ffbd73 !important;
+  color: #ffbd73 !important;
+}
+
 .back-to-top {
   position: fixed;
   right: 18px;

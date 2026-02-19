@@ -1,8 +1,8 @@
 /* Education Section Styles */
 .edu-section {
-  min-height: 100vh;
+  min-height: auto;
   background: transparent;
-  padding: 4rem 1rem;
+  padding: 2.6rem 1rem;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   overflow: hidden;
@@ -18,7 +18,7 @@
 /* Header Styles */
 .edu-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.3rem;
 }
 
 .edu-title {
@@ -44,7 +44,7 @@
 /* Timeline Styles */
 .edu-timeline {
   position: relative;
-  max-width: 1000px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -65,7 +65,7 @@
 .timeline-item {
   display: flex;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.3rem;
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -105,7 +105,7 @@
 
 /* Box Wrapper */
 .edu-box-wrapper {
-  max-width: 450px;
+  max-width: 500px;
   width: 100%;
 }
 
@@ -121,17 +121,17 @@
 .edu-box {
   background: var(--surface-glass);
   backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 18px;
+  padding: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border: 1px solid var(--border-color);
   position: relative;
-  transform: scale(0.9);
+  transform: none;
   transition: transform 0.6s ease, box-shadow 0.3s ease;
 }
 
 .timeline-item.visible .edu-box {
-  transform: scale(1);
+  transform: none;
 }
 
 .edu-box:hover {
@@ -174,7 +174,7 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .edu-institution {
@@ -182,7 +182,7 @@
   color: var(--text-secondary);
   margin-bottom: 1rem;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
   line-height: 1.4;
 }
 
@@ -193,7 +193,7 @@
   border-radius: 25px;
   font-size: 0.9rem;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   margin-bottom: 1rem;
   display: inline-block;
   width: 100%;
@@ -204,7 +204,7 @@
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.6;
-  text-align: center;
+  text-align: left;
   margin: 0;
 }
 
@@ -290,7 +290,7 @@
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
   .edu-section {
-    padding: 2rem 1rem;
+    padding: 1.4rem 0.5rem;
   }
 
   .edu-header {
@@ -307,8 +307,8 @@
 
   .timeline-item {
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
+    align-items: stretch;
+    margin-bottom: 1.1rem;
   }
 
   .timeline-item.left .edu-box-wrapper,
@@ -321,8 +321,16 @@
   }
 
   .edu-box {
-    padding: 1.5rem;
-    margin: 0 auto;
+    padding: 1.05rem;
+    margin: 0;
+    border-radius: 14px;
+  }
+
+  .edu-box-title,
+  .edu-institution,
+  .edu-year,
+  .edu-description {
+    text-align: left;
   }
 
   .edu-decoration {
@@ -332,46 +340,16 @@
 
 @media screen and (max-width: 500px) {
   .edu-timeline {
-    position: relative;
-    padding-left: 30px;
-  }
-
-  .edu-timeline::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 15px;
-    width: 3px;
-    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
-    z-index: 1;
-    border-radius: 1px;
+    padding-left: 0;
   }
 
   .timeline-item {
-    position: relative;
-    margin-left: 0;
-    padding-left: 0;
-    margin-bottom: 3rem;
-  }
-
-  .timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -13px;
-    top: 1.5rem;
-    width: 15px;
-    height: 15px;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    border-radius: 50%;
-    border: 2px solid var(--bg-main);
-    z-index: 2;
-    transform: translateX(-50%);
+    margin-bottom: 0.95rem;
   }
 
   .edu-box {
-    width: calc(100% - 15px);
-    margin-left: 10px;
+    width: 100%;
+    margin-left: 0;
   }
 
   .edu-box-title {
@@ -388,22 +366,10 @@
 }
 
 @media screen and (max-width: 350px) {
-  .edu-timeline {
-    padding-left: 25px;
-  }
-
-  .edu-timeline::before {
-    left: 12px;
-  }
-
-  .timeline-item::before {
-    left: -20px;
-  }
-
   .edu-box {
-    padding: 1rem;
-    width: calc(100% - 10px);
-    margin-left: 8px;
+    padding: 0.9rem;
+    width: 100%;
+    margin-left: 0;
   }
 
   .edu-box-title {

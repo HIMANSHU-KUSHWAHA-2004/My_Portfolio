@@ -56,6 +56,8 @@ const projects = [
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -63,6 +65,26 @@ const Projects = () => {
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (event) => {
+    setTouchStartX(event.targetTouches[0].clientX);
+    setTouchEndX(event.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (event) => {
+    setTouchEndX(event.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX - touchEndX;
+    const minSwipeDistance = 45;
+
+    if (swipeDistance > minSwipeDistance) {
+      handleNext();
+    } else if (swipeDistance < -minSwipeDistance) {
+      handlePrev();
+    }
   };
 
   useEffect(() => {
@@ -82,10 +104,10 @@ const Projects = () => {
         className="slider-container"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        <button className="slider-btn left" onClick={handlePrev} aria-label="Previous project">
-          &#8249;
-        </button>
         <div className="project-card">
           <div className="project-img">
             <img src={project.image} alt={project.title} />
@@ -98,9 +120,6 @@ const Projects = () => {
             </a>
           </button>
         </div>
-        <button className="slider-btn right" onClick={handleNext} aria-label="Next project">
-          &#8250;
-        </button>
       </div>
       <div className="slider-dots">
         {projects.map((item, idx) => (
