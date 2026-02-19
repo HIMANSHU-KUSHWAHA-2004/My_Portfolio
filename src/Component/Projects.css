@@ -1,183 +1,118 @@
-/* General Reset for Horizontal Overflow */
-body {
-    overflow-x: hidden;
-}
-
-/* Projects Section */
 .projects-section {
-    padding: 2rem 0rem;
-    background-color: white;
-    color: black;
-    text-align: center;
+  padding: 0.6rem;
+  text-align: center;
 }
 
 .projects-title {
-    font-size: 2.5rem;
-    color: black;
-    margin-bottom: 4rem;
+  margin: 0 0 1.8rem;
 }
 
-/* Slider Layout */
 .slider-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    max-width: 700px;
-    margin: auto;
-    position: relative;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 620px) 52px;
+  align-items: center;
+  gap: 0.8rem;
+  width: min(760px, 100%);
+  margin: 0 auto;
 }
 
-/* Card Styling */
 .project-card {
-    background-color: #181c2f;
-    border-radius: 12px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  padding: 1.2rem;
+  animation: cardSlide 0.35s ease;
 }
 
 .project-img {
   width: 100%;
-  height: 250px;
-  background-color: #181c2f;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 260px;
+  border-radius: 14px;
   overflow: hidden;
-  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
 }
 
 .project-img img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Show full image without cropping */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
 .project-card h3 {
-    font-size: 1.5rem;
-    color: white;
-    margin-bottom: 0.5rem;
+  margin: 0 0 0.55rem;
+  color: var(--text-primary);
 }
 
 .project-card p {
-    font-size: 1rem;
-    color: white;
-    margin-bottom: 1rem;
+  margin: 0 0 0.8rem;
+  line-height: 1.7;
 }
 
-.project-card a {
-    color: #3f51b5;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.project-card a:hover {
-    text-decoration: underline;
-}
-
-/* Slider Buttons */
 .slider-btn {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #3f51b5;
-    transition: color 0.3s;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--surface-glass);
+  font-size: 1.7rem;
+  cursor: pointer;
 }
 
 .slider-btn:hover {
-    color: #1a237e;
+  transform: scale(1.06);
 }
 
-/* Dark Theme Overrides */
-body.dark .projects-section {
-    background-color: transparent;
-    color: #e0e7ff;
-}
-
-body.dark .projects-title {
-    color: white;
-}
-
-body.dark .project-card {
-    background-color: #181c2f;
-    color: #e0e7ff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-}
-
-body.dark .project-card h3 {
-    color: #ffb74d;
-}
-
-body.dark .project-card p,
-body.dark .project-card a {
-    color: #e0e7ff;
-}
-
-body.dark .slider-btn {
-    color: #81d4fa;
-}
-
-/* Responsive Layout for Small Screens */
-@media screen and (max-width: 500px) {
-    .projects-section {
-        padding: 0rem 0;
-    }
-
-    .slider-container {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-        margin: 0 auto;
-    }
-
-    .project-card {
-        width: 100%;
-        max-width: 100%;
-        border-radius: 0;
-        margin: 0;
-        padding: 1rem;
-    }
-
-    .project-img {
-        height: 180px;
-    }
-
-    .project-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .project-card p {
-        font-size: 0.95rem;
-    }
-
-    .slider-btn {
-        font-size: 1.8rem;
-    }
-}
 .github-btn {
-  background-color: rgb(117, 117, 255);
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  margin-top: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .github-btn a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
 }
 
-.github-btn:hover {
-  background-color: #303f9f;
+.slider-dots {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
 }
 
+.dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-primary) 30%, var(--surface-glass));
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.dot.active {
+  background: var(--accent-primary);
+  transform: scale(1.2);
+}
+
+@keyframes cardSlide {
+  from {
+    opacity: 0.35;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 620px) {
+  .slider-container {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 0.45rem;
+  }
+
+  .project-img {
+    height: 180px;
+  }
+}

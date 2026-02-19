@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Projects.css";
 
-// Correct image imports
 import flappyImg from "../assets/flappy.png";
 import stockImg from "../assets/stock.png";
 import bankImg from "../assets/bank.png";
@@ -13,42 +12,42 @@ const projects = [
   {
     title: "Flappy Bird Game Clone",
     description:
-      "A Python-based Flappy Bird game developed using Tkinter and Pygame. Features smooth animations, collision detection, and increasing difficulty over time for an engaging experience.",
+      "A Python-based Flappy Bird game using Tkinter and Pygame with smooth animation, collision logic, and adaptive difficulty.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/flappy_bird.git",
     image: flappyImg,
   },
   {
     title: "Stock Portfolio Tracker",
     description:
-      "A Python application that uses yfinance and public APIs to track real-time stock performance, portfolio gains/losses, and visualize holdings with graphs and summaries.",
+      "A Python tool using yfinance and public APIs to track stock performance, portfolio gain/loss, and key visual summaries.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/CodeAlpha_Task_2_intern.git",
     image: stockImg,
   },
   {
     title: "Band Management System",
     description:
-      "A terminal-based management system built in Python that stores and manages band member info, schedules, and performances using structured JSON data.",
+      "A terminal-based Python management system for storing and organizing member details, schedules, and event data with JSON.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/Bank_management_system.git",
     image: bankImg,
   },
   {
     title: "Python Music Player",
     description:
-      "A fully functional desktop music player app built with Tkinter and Pygame. Supports audio file loading, play/pause/stop controls, and basic UI interactions.",
+      "A desktop music player app built with Tkinter and Pygame supporting file loading and playback controls.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/musix.git",
     image: musicImg,
   },
   {
     title: "Sudoku Solver",
     description:
-      "A C++ program that solves Sudoku puzzles using backtracking algorithm. Efficiently finds a valid solution for any solvable grid configuration.",
+      "A C++ Sudoku solver using backtracking to efficiently find valid solutions for solvable boards.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/Prodigy_Task_4_Intern.git",
     image: sudokuImg,
   },
   {
     title: "NoFap Streak Tracker",
     description:
-      "A streak-tracking productivity app developed using React for the frontend and FastAPI for the backend. Includes calendar marking, certificate generation, and theme toggling.",
+      "A productivity app with React frontend and FastAPI backend featuring calendar tracking, certificates, and theme support.",
     github: "https://github.com/HIMANSHU-KUSHWAHA-2004/NoFap_Project.git",
     image: nofapImg,
   },
@@ -56,6 +55,7 @@ const projects = [
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -65,14 +65,26 @@ const Projects = () => {
     setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
+  useEffect(() => {
+    if (isPaused) return undefined;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    }, 3400);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
   const project = projects[currentIndex];
 
   return (
     <section className="projects-section">
       <h2 className="projects-title">My Projects</h2>
-      <div className="slider-container">
-        <button className="slider-btn left" onClick={handlePrev}>
-          ‹
+      <div
+        className="slider-container"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <button className="slider-btn left" onClick={handlePrev} aria-label="Previous project">
+          &#8249;
         </button>
         <div className="project-card">
           <div className="project-img">
@@ -86,9 +98,20 @@ const Projects = () => {
             </a>
           </button>
         </div>
-        <button className="slider-btn right" onClick={handleNext}>
-          ›
+        <button className="slider-btn right" onClick={handleNext} aria-label="Next project">
+          &#8250;
         </button>
+      </div>
+      <div className="slider-dots">
+        {projects.map((item, idx) => (
+          <button
+            key={item.title}
+            type="button"
+            className={`dot ${idx === currentIndex ? "active" : ""}`}
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Open ${item.title}`}
+          />
+        ))}
       </div>
     </section>
   );

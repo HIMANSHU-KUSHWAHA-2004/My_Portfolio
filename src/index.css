@@ -1,159 +1,90 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #000000;
-  color: #ffffff;
-  transition: background 0.3s, color 0.3s;
-  cursor: none;
-  overflow-x: hidden;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root[data-theme="light"] {
+  --bg-main: #edf1ff;
+  --bg-gradient: radial-gradient(circle at 12% 12%, #d6defc 0%, transparent 36%),
+    radial-gradient(circle at 86% 20%, #ffd7d1 0%, transparent 35%),
+    linear-gradient(160deg, #f4f6ff 0%, #eef4ff 52%, #f8efff 100%);
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-glass: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.88);
+  --text-primary: #101632;
+  --text-secondary: #4f567a;
+  --accent-primary: #4858ff;
+  --accent-secondary: #00a8c6;
+  --accent-soft: rgba(72, 88, 255, 0.12);
+  --border-color: rgba(42, 51, 96, 0.14);
+  --shadow-1: 0 20px 40px rgba(28, 37, 78, 0.12);
+  --shadow-2: 0 28px 60px rgba(19, 25, 58, 0.2);
+  --blob-one: rgba(74, 126, 255, 0.45);
+  --blob-two: rgba(0, 205, 178, 0.36);
+  --blob-three: rgba(255, 106, 123, 0.3);
 }
 
-/* Custom cursor */
-body::before {
-  content: '';
-  position: fixed;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #00d4ff;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: all 0.1s ease;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+:root[data-theme="dark"] {
+  --bg-main: #0a1020;
+  --bg-gradient: radial-gradient(circle at 20% 18%, rgba(44, 70, 140, 0.55) 0%, transparent 35%),
+    radial-gradient(circle at 82% 26%, rgba(72, 26, 82, 0.5) 0%, transparent 35%),
+    linear-gradient(160deg, #070b16 0%, #0f1731 50%, #0e1224 100%);
+  --surface: rgba(11, 18, 39, 0.62);
+  --surface-glass: rgba(17, 26, 54, 0.75);
+  --surface-strong: rgba(13, 22, 46, 0.9);
+  --text-primary: #eaf0ff;
+  --text-secondary: #98a6cc;
+  --accent-primary: #7a8dff;
+  --accent-secondary: #57d6ff;
+  --accent-soft: rgba(122, 141, 255, 0.2);
+  --border-color: rgba(152, 173, 255, 0.18);
+  --shadow-1: 0 20px 45px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 30px 70px rgba(0, 0, 0, 0.48);
+  --blob-one: rgba(90, 112, 255, 0.4);
+  --blob-two: rgba(87, 214, 255, 0.27);
+  --blob-three: rgba(189, 108, 247, 0.24);
 }
 
-/* Hide default pointer on interactive elements */
-a, button, .clickable {
-  cursor: none !important;
-}
-
-a:hover, button:hover, .clickable:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s ease;
-}
-
-.toggle-btn {
-  padding: 12px 24px;
-  background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-  border: 1px solid #333;
-  border-radius: 50px;
-  cursor: none;
-  font-weight: 600;
-  color: #00d4ff;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
-  font-size: 14px;
-  letter-spacing: 0.5px;
-}
-
-.toggle-btn:hover {
-  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0, 212, 255, 0.3);
-}
-
-.section {
-  position: relative;
-  z-index: 2;
-  margin: 0rem 0;
-  padding: 2rem;
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-
-.section h1, .section h2, .section h3 {
-  margin-bottom: 2rem;
-  font-weight: 700;
-  text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-}
-
-.section h1 {
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #00d4ff, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.section h2 {
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #00d4ff, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 50px;
-  background-clip: text
-}
-
-/* Grids for skills, experience, projects */
-.skills-grid, .projects-grid, .experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.skill-card, .project-card, .experience-card {
-  background: linear-gradient(145deg, #111111, #222222);
-  border: 1px solid #333;
-  border-radius: 15px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.skill-card:hover, .project-card:hover, .experience-card:hover {
-  transform: translateY(-5px);
-  border-color: #00d4ff;
-  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.2);
-}
-
-p, li, span {
-  color: #cccccc;
-  line-height: 1.6;
-}
-
-a {
-  color: #00d4ff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-}
-
-input, textarea, select {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 8px;
-  color: #ffffff;
-  padding: 12px;
-  transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: #00d4ff;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-}
-
-html {
-  scroll-behavior: smooth;
+:root[data-theme="forest"] {
+  --bg-main: #071a14;
+  --bg-gradient: radial-gradient(circle at 16% 18%, rgba(19, 93, 76, 0.5) 0%, transparent 35%),
+    radial-gradient(circle at 84% 22%, rgba(38, 126, 96, 0.42) 0%, transparent 36%),
+    linear-gradient(160deg, #06140f 0%, #0d261f 52%, #0f2f24 100%);
+  --surface: rgba(9, 45, 33, 0.62);
+  --surface-glass: rgba(16, 60, 45, 0.74);
+  --surface-strong: rgba(13, 52, 39, 0.88);
+  --text-primary: #f4ffe9;
+  --text-secondary: #c7e7d1;
+  --accent-primary: #2ec27e;
+  --accent-secondary: #8eea9d;
+  --accent-soft: rgba(46, 194, 126, 0.2);
+  --border-color: rgba(123, 215, 171, 0.22);
+  --shadow-1: 0 20px 45px rgba(2, 20, 14, 0.4);
+  --shadow-2: 0 30px 70px rgba(0, 0, 0, 0.5);
+  --blob-one: rgba(46, 194, 126, 0.32);
+  --blob-two: rgba(142, 234, 157, 0.26);
+  --blob-three: rgba(29, 130, 102, 0.3);
 }
 
 * {
   box-sizing: border-box;
 }
 
-canvas {
-  will-change: transform;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background: var(--bg-gradient);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: color 0.3s ease, background-color 0.3s ease;
+  overflow-x: hidden;
+}
+
+a,
+button,
+input,
+textarea {
+  font-family: inherit;
 }

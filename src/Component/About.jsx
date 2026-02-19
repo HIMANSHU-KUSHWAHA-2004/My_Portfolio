@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css";
-import profileImg from "../assets/Profile_2.png"; // ✅ Use the same image from Home
-import resume from "../assets/Himanshu_resume.pdf"; // ✅ Use the same file from Home
+import profileImg from "../assets/Profile_2.png";
+import resume from "../assets/Himanshu_resume.pdf";
 
 function About() {
   return (
@@ -11,24 +11,22 @@ function About() {
       </div>
 
       <div className="about-container">
-        {/* Left: Text */}
         <div className="about-text">
           <p>
-            I'm Himanshu Kushwaha, a Computer Science student passionate about data analysis and machine learning.
-            I have a solid foundation in Python and C++, and I'm currently building my skills in data structures,
-            algorithms, and competitive programming.
+            I am Himanshu Kushwaha, a Computer Science student focused on data analysis and
+            machine learning. I have a strong base in Python and C++ and I am actively improving
+            my skills in data structures, algorithms, and competitive programming.
           </p>
           <p>
-            I'm also deeply interested in applying data science to solve real-world problems,
-            with growing knowledge in machine learning techniques and tools.
+            I enjoy using data science to solve real-world problems and continuously explore better
+            methods for machine learning and analytics.
           </p>
 
           <a href={resume} download className="resume-download-btn">
-            📄 Download Resume
+            Download Resume
           </a>
         </div>
 
-        {/* Right: Image */}
         <div className="about-img-container">
           <img src={profileImg} alt="Profile" className="about-img" />
         </div>

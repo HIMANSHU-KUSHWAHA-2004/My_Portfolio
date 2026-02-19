@@ -1,209 +1,202 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from "react";
 
-const BackgroundEffect = () => {
+const themePalette = {
+  dark: {
+    particle: "122, 141, 255",
+    line: "87, 214, 255",
+  },
+  light: {
+    particle: "72, 88, 255",
+    line: "0, 168, 198",
+  },
+  forest: {
+    particle: "46, 194, 126",
+    line: "142, 234, 157",
+  },
+};
+
+function BackgroundEffect({ theme }) {
   const canvasRef = useRef(null);
-  const animationRef = useRef(null);
+  const rafRef = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const particlesRef = useRef([]);
-  const [mouseTrail, setMouseTrail] = useState([]);
-
-  // Particle class
-  class Particle {
-    constructor(canvas) {
-      this.canvas = canvas;
-      this.reset();
-      this.opacity = Math.random() * 0.5 + 0.3;
-      this.baseOpacity = this.opacity;
-    }
-
-    reset() {
-      this.x = Math.random() * this.canvas.width;
-      this.y = Math.random() * this.canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.5;
-      this.vy = (Math.random() - 0.5) * 0.5;
-      this.size = Math.random() * 2 + 1;
-    }
-
-    update(mouse) {
-      // Move particle
-      this.x += this.vx;
-      this.y += this.vy;
-
-      // Bounce off edges
-      if (this.x < 0 || this.x > this.canvas.width) this.vx *= -1;
-      if (this.y < 0 || this.y > this.canvas.height) this.vy *= -1;
-
-      // Mouse interaction
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < 100) {
-        const force = (100 - distance) / 100;
-        this.opacity = this.baseOpacity + force * 0.5;
-        
-        // Gentle attraction to mouse
-        this.vx += (dx / distance) * force * 0.01;
-        this.vy += (dy / distance) * force * 0.01;
-      } else {
-        this.opacity = this.baseOpacity;
-      }
-
-      // Limit velocity
-      const maxSpeed = 1;
-      const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-      if (speed > maxSpeed) {
-        this.vx = (this.vx / speed) * maxSpeed;
-        this.vy = (this.vy / speed) * maxSpeed;
-      }
-    }
-
-    draw(ctx) {
-      ctx.save();
-      ctx.globalAlpha = this.opacity;
-      ctx.fillStyle = '#00d4ff';
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-      
-      // Add glow effect
-      ctx.shadowColor = '#00d4ff';
-      ctx.shadowBlur = 10;
-      ctx.fill();
-      
-      ctx.restore();
-    }
-  }
+  const cursorRef = useRef(null);
+  const trailRef = useRef(null);
+  const cursorTargetRef = useRef({ x: 0, y: 0 });
+  const cursorCurrentRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    
-    const resizeCanvas = () => {
+    const ctx = canvas.getContext("2d");
+    const palette = themePalette[theme] || themePalette.dark;
+
+    class Particle {
+      constructor() {
+        this.reset();
+        this.alpha = Math.random() * 0.45 + 0.18;
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.size = Math.random() * 2 + 0.8;
+      }
+
+      move() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < -20 || this.x > canvas.width + 20) this.vx *= -1;
+        if (this.y < -20 || this.y > canvas.height + 20) this.vy *= -1;
+
+        const dx = mouseRef.current.x - this.x;
+        const dy = mouseRef.current.y - this.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance > 0 && distance < 140) {
+          const pull = (140 - distance) / 140;
+          this.vx += (dx / distance) * pull * 0.015;
+          this.vy += (dy / distance) * pull * 0.015;
+        }
+
+        this.vx = Math.max(-0.9, Math.min(0.9, this.vx));
+        this.vy = Math.max(-0.9, Math.min(0.9, this.vy));
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.shadowColor = `rgba(${palette.line}, 0.7)`;
+        ctx.shadowBlur = 12;
+        ctx.fillStyle = `rgba(${palette.particle}, ${Math.min(0.95, this.alpha + 0.1)})`;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    const onResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      
-      // Reinitialize particles
-      particlesRef.current = [];
-      const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
-      
-      for (let i = 0; i < particleCount; i++) {
-        particlesRef.current.push(new Particle(canvas));
-      }
+      const count = Math.min(95, Math.floor((canvas.width * canvas.height) / 17000));
+      particlesRef.current = Array.from({ length: count }, () => new Particle());
     };
 
-    const handleMouseMove = (e) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-      
-      // Add to mouse trail
-      setMouseTrail(prev => {
-        const newTrail = [...prev, { x: e.clientX, y: e.clientY, opacity: 1, id: Date.now() }];
-        return newTrail.slice(-8); // Keep last 8 points
-      });
+    const onMouseMove = (event) => {
+      mouseRef.current = { x: event.clientX, y: event.clientY };
+      cursorTargetRef.current = { x: event.clientX, y: event.clientY };
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Update and draw particles
-      particlesRef.current.forEach(particle => {
-        particle.update(mouseRef.current);
-        particle.draw(ctx);
+
+      particlesRef.current.forEach((particle) => {
+        particle.move();
+        particle.draw();
       });
 
-      // Draw connections between nearby particles
-      ctx.save();
-      ctx.globalAlpha = 0.2;
-      ctx.strokeStyle = '#00d4ff';
-      ctx.lineWidth = 1;
-      ctx.shadowColor = '#00d4ff';
-      ctx.shadowBlur = 5;
-
-      for (let i = 0; i < particlesRef.current.length; i++) {
-        for (let j = i + 1; j < particlesRef.current.length; j++) {
-          const dx = particlesRef.current[i].x - particlesRef.current[j].x;
-          const dy = particlesRef.current[i].y - particlesRef.current[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      for (let i = 0; i < particlesRef.current.length; i += 1) {
+        for (let j = i + 1; j < particlesRef.current.length; j += 1) {
+          const first = particlesRef.current[i];
+          const second = particlesRef.current[j];
+          const dx = first.x - second.x;
+          const dy = first.y - second.y;
+          const distance = Math.hypot(dx, dy);
 
           if (distance < 120) {
+            const alpha = (1 - distance / 120) * 0.36;
+            ctx.strokeStyle = `rgba(${palette.line}, ${alpha})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(particlesRef.current[i].x, particlesRef.current[i].y);
-            ctx.lineTo(particlesRef.current[j].x, particlesRef.current[j].y);
+            ctx.moveTo(first.x, first.y);
+            ctx.lineTo(second.x, second.y);
             ctx.stroke();
           }
         }
       }
-      ctx.restore();
 
-      animationRef.current = requestAnimationFrame(animate);
+      const canUseFinePointer = window.matchMedia("(pointer: fine)").matches;
+      if (canUseFinePointer && cursorRef.current && trailRef.current) {
+        const target = cursorTargetRef.current;
+        const current = cursorCurrentRef.current;
+        current.x += (target.x - current.x) * 0.18;
+        current.y += (target.y - current.y) * 0.18;
+
+        cursorRef.current.style.transform = `translate(${target.x}px, ${target.y}px)`;
+        trailRef.current.style.transform = `translate(${current.x}px, ${current.y}px)`;
+      }
+
+      rafRef.current = requestAnimationFrame(animate);
     };
 
-    resizeCanvas();
+    onResize();
     animate();
 
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("resize", onResize);
+    window.addEventListener("mousemove", onMouseMove);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("mousemove", onMouseMove);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [theme]);
 
-  // Fade out mouse trail
-  useEffect(() => {
-    if (mouseTrail.length > 0) {
-      const timer = setTimeout(() => {
-        setMouseTrail(prev => 
-          prev.map(point => ({ ...point, opacity: point.opacity * 0.9 }))
-            .filter(point => point.opacity > 0.1)
-        );
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [mouseTrail]);
+  const palette = themePalette[theme] || themePalette.dark;
 
   return (
     <>
       <canvas
         ref={canvasRef}
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: -1,
+          position: "fixed",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1,
+          pointerEvents: "none",
         }}
       />
-      
-      {/* Mouse trail */}
-      {mouseTrail.map((point, index) => (
-        <div
-          key={point.id}
-          style={{
-            position: 'fixed',
-            left: point.x - 3,
-            top: point.y - 3,
-            width: '8px',
-            height: '8px',
-            borderRadius: '50%',
-            backgroundColor: '#00d4ff',
-            boxShadow: '0 0 10px #00d4ff',
-            opacity: point.opacity * (index / mouseTrail.length),
-            pointerEvents: 'none',
-            zIndex: 1000,
-            transform: `scale(${0.3 + (index / mouseTrail.length) * 0.7})`,
-            transition: 'opacity 0.1s ease-out',
-          }}
-        />
-      ))}
+      <div
+        ref={trailRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "34px",
+          height: "34px",
+          borderRadius: "999px",
+          transform: "translate(-100px, -100px)",
+          marginLeft: "-17px",
+          marginTop: "-17px",
+          background: `radial-gradient(circle, rgba(${palette.line}, 0.28), rgba(${palette.line}, 0.02) 72%)`,
+          border: `1px solid rgba(${palette.line}, 0.35)`,
+          backdropFilter: "blur(2px)",
+          pointerEvents: "none",
+          zIndex: 60,
+        }}
+      />
+      <div
+        ref={cursorRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "8px",
+          height: "8px",
+          borderRadius: "999px",
+          transform: "translate(-100px, -100px)",
+          marginLeft: "-4px",
+          marginTop: "-4px",
+          background: `rgba(${palette.line}, 1)`,
+          boxShadow: `0 0 18px rgba(${palette.line}, 0.9)`,
+          pointerEvents: "none",
+          zIndex: 61,
+        }}
+      />
     </>
   );
-};
+}
 
 export default BackgroundEffect;
