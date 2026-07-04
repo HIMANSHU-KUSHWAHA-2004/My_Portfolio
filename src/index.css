@@ -1,90 +1,369 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap");
 
+/* ===========================
+   LIGHT THEME
+=========================== */
+
 :root[data-theme="light"] {
-  --bg-main: #edf1ff;
-  --bg-gradient: radial-gradient(circle at 12% 12%, #d6defc 0%, transparent 36%),
-    radial-gradient(circle at 86% 20%, #ffd7d1 0%, transparent 35%),
-    linear-gradient(160deg, #f4f6ff 0%, #eef4ff 52%, #f8efff 100%);
-  --surface: rgba(255, 255, 255, 0.7);
-  --surface-glass: rgba(255, 255, 255, 0.78);
-  --surface-strong: rgba(255, 255, 255, 0.88);
-  --text-primary: #101632;
-  --text-secondary: #4f567a;
-  --accent-primary: #4858ff;
-  --accent-secondary: #00a8c6;
-  --accent-soft: rgba(72, 88, 255, 0.12);
-  --border-color: rgba(42, 51, 96, 0.14);
-  --shadow-1: 0 20px 40px rgba(28, 37, 78, 0.12);
-  --shadow-2: 0 28px 60px rgba(19, 25, 58, 0.2);
-  --blob-one: rgba(74, 126, 255, 0.45);
-  --blob-two: rgba(0, 205, 178, 0.36);
-  --blob-three: rgba(255, 106, 123, 0.3);
+
+  --bg-main:#eef3ff;
+
+  --bg-gradient:
+  radial-gradient(circle at 10% 10%,rgba(95,140,255,.28),transparent 35%),
+  radial-gradient(circle at 90% 18%,rgba(255,145,150,.25),transparent 35%),
+  radial-gradient(circle at 50% 90%,rgba(0,200,255,.18),transparent 40%),
+  linear-gradient(145deg,#f9fbff 0%,#edf3ff 45%,#f5f6ff 100%);
+
+  --surface:rgba(255,255,255,.62);
+
+  --surface-glass:rgba(255,255,255,.72);
+
+  --surface-strong:rgba(255,255,255,.88);
+
+  --text-primary:#111827;
+
+  --text-secondary:#5d6483;
+
+  --accent-primary:#5b5cff;
+
+  --accent-secondary:#00bcd4;
+
+  --accent-soft:rgba(91,92,255,.15);
+
+  --border-color:rgba(80,90,150,.15);
+
+  --shadow-1:
+  0 15px 40px rgba(25,40,80,.12);
+
+  --shadow-2:
+  0 28px 70px rgba(25,40,80,.18);
+
+  --blob-one:rgba(92,124,255,.45);
+
+  --blob-two:rgba(0,212,170,.35);
+
+  --blob-three:rgba(255,117,140,.28);
 }
 
-:root[data-theme="dark"] {
-  --bg-main: #0a1020;
-  --bg-gradient: radial-gradient(circle at 20% 18%, rgba(44, 70, 140, 0.55) 0%, transparent 35%),
-    radial-gradient(circle at 82% 26%, rgba(72, 26, 82, 0.5) 0%, transparent 35%),
-    linear-gradient(160deg, #070b16 0%, #0f1731 50%, #0e1224 100%);
-  --surface: rgba(11, 18, 39, 0.62);
-  --surface-glass: rgba(17, 26, 54, 0.75);
-  --surface-strong: rgba(13, 22, 46, 0.9);
-  --text-primary: #eaf0ff;
-  --text-secondary: #98a6cc;
-  --accent-primary: #7a8dff;
-  --accent-secondary: #57d6ff;
-  --accent-soft: rgba(122, 141, 255, 0.2);
-  --border-color: rgba(152, 173, 255, 0.18);
-  --shadow-1: 0 20px 45px rgba(0, 0, 0, 0.35);
-  --shadow-2: 0 30px 70px rgba(0, 0, 0, 0.48);
-  --blob-one: rgba(90, 112, 255, 0.4);
-  --blob-two: rgba(87, 214, 255, 0.27);
-  --blob-three: rgba(189, 108, 247, 0.24);
+/* ===========================
+   DARK THEME
+=========================== */
+
+:root[data-theme="dark"]{
+
+  --bg-main:#050814;
+
+  --bg-gradient:
+  radial-gradient(circle at 18% 18%,rgba(72,95,255,.35),transparent 36%),
+  radial-gradient(circle at 82% 22%,rgba(185,77,255,.22),transparent 35%),
+  radial-gradient(circle at 50% 100%,rgba(0,185,255,.12),transparent 42%),
+  linear-gradient(150deg,#050814 0%,#0a1329 45%,#060b18 100%);
+
+  --surface:rgba(15,22,45,.55);
+
+  --surface-glass:rgba(18,27,56,.70);
+
+  --surface-strong:rgba(16,24,48,.88);
+
+  --text-primary:#edf3ff;
+
+  --text-secondary:#9aa7d1;
+
+  --accent-primary:#7b8dff;
+
+  --accent-secondary:#37dfff;
+
+  --accent-soft:rgba(123,141,255,.20);
+
+  --border-color:rgba(150,175,255,.16);
+
+  --shadow-1:
+  0 15px 40px rgba(0,0,0,.35);
+
+  --shadow-2:
+  0 35px 80px rgba(0,0,0,.55);
+
+  --blob-one:rgba(100,115,255,.40);
+
+  --blob-two:rgba(55,223,255,.28);
+
+  --blob-three:rgba(199,96,255,.25);
 }
 
-:root[data-theme="forest"] {
-  --bg-main: #071a14;
-  --bg-gradient: radial-gradient(circle at 16% 18%, rgba(19, 93, 76, 0.5) 0%, transparent 35%),
-    radial-gradient(circle at 84% 22%, rgba(38, 126, 96, 0.42) 0%, transparent 36%),
-    linear-gradient(160deg, #06140f 0%, #0d261f 52%, #0f2f24 100%);
-  --surface: rgba(9, 45, 33, 0.62);
-  --surface-glass: rgba(16, 60, 45, 0.74);
-  --surface-strong: rgba(13, 52, 39, 0.88);
-  --text-primary: #f4ffe9;
-  --text-secondary: #c7e7d1;
-  --accent-primary: #2ec27e;
-  --accent-secondary: #8eea9d;
-  --accent-soft: rgba(46, 194, 126, 0.2);
-  --border-color: rgba(123, 215, 171, 0.22);
-  --shadow-1: 0 20px 45px rgba(2, 20, 14, 0.4);
-  --shadow-2: 0 30px 70px rgba(0, 0, 0, 0.5);
-  --blob-one: rgba(46, 194, 126, 0.32);
-  --blob-two: rgba(142, 234, 157, 0.26);
-  --blob-three: rgba(29, 130, 102, 0.3);
+/* ===========================
+   FOREST THEME
+=========================== */
+
+:root[data-theme="forest"]{
+
+  --bg-main:#06130f;
+
+  --bg-gradient:
+  radial-gradient(circle at 15% 15%,rgba(46,194,126,.28),transparent 35%),
+  radial-gradient(circle at 84% 18%,rgba(130,255,190,.16),transparent 35%),
+  radial-gradient(circle at 50% 100%,rgba(46,194,126,.10),transparent 40%),
+  linear-gradient(145deg,#05110d 0%,#0c241d 50%,#081611 100%);
+
+  --surface:rgba(11,40,31,.58);
+
+  --surface-glass:rgba(17,54,42,.70);
+
+  --surface-strong:rgba(16,58,44,.88);
+
+  --text-primary:#f2fff3;
+
+  --text-secondary:#c6e6d2;
+
+  --accent-primary:#2ec27e;
+
+  --accent-secondary:#90f3b0;
+
+  --accent-soft:rgba(46,194,126,.18);
+
+  --border-color:rgba(120,220,170,.18);
+
+  --shadow-1:
+  0 18px 42px rgba(0,0,0,.42);
+
+  --shadow-2:
+  0 35px 80px rgba(0,0,0,.55);
+
+  --blob-one:rgba(46,194,126,.34);
+
+  --blob-two:rgba(142,234,157,.24);
+
+  --blob-three:rgba(0,255,160,.18);
 }
 
-* {
-  box-sizing: border-box;
+/* ===========================
+   GLOBAL RESET
+=========================== */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Poppins", "Segoe UI", sans-serif;
-  background: var(--bg-gradient);
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  transition: color 0.3s ease, background-color 0.3s ease;
-  overflow-x: hidden;
+body{
+
+    min-height:100vh;
+
+    font-family:"Poppins","Segoe UI",sans-serif;
+
+    color:var(--text-primary);
+
+    background:
+    var(--bg-gradient);
+
+    background-color:
+    var(--bg-main);
+
+    overflow-x:hidden;
+
+    transition:
+    background .45s ease,
+    color .35s ease;
+
+    line-height:1.7;
+
+    letter-spacing:.2px;
+
+    text-rendering:optimizeLegibility;
+
+    -webkit-font-smoothing:antialiased;
+
 }
 
-a,
+/* ===========================
+   Premium Background Glow
+=========================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background:
+
+radial-gradient(circle at 15% 20%,
+rgba(255,255,255,.05),
+transparent 35%),
+
+radial-gradient(circle at 85% 15%,
+rgba(255,255,255,.04),
+transparent 35%),
+
+radial-gradient(circle at 50% 100%,
+rgba(255,255,255,.03),
+transparent 45%);
+
+animation:backgroundMove 18s ease-in-out infinite alternate;
+
+z-index:-2;
+
+}
+
+/* ===========================
+   Noise Texture
+=========================== */
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+opacity:.03;
+
+background-image:
+
+radial-gradient(circle,rgba(255,255,255,.25) 1px,transparent 1px);
+
+background-size:18px 18px;
+
+mix-blend-mode:overlay;
+
+z-index:-1;
+
+}
+
+/* ===========================
+   Typography
+=========================== */
+
+h1,h2,h3,h4{
+
+font-family:"Space Grotesk","Poppins",sans-serif;
+
+font-weight:700;
+
+letter-spacing:.4px;
+
+}
+
+p{
+
+color:var(--text-secondary);
+
+}
+
+/* ===========================
+   Links & Buttons
+=========================== */
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+transition:.3s;
+
+}
+
 button,
 input,
-textarea {
-  font-family: inherit;
+textarea{
+
+font-family:inherit;
+
+}
+
+button{
+
+cursor:pointer;
+
+transition:.3s ease;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+/* ===========================
+   Selection
+=========================== */
+
+::selection{
+
+background:var(--accent-primary);
+
+color:white;
+
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:transparent;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+180deg,
+var(--accent-primary),
+var(--accent-secondary)
+);
+
+border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+filter:brightness(1.2);
+
+}
+
+/* ===========================
+   Background Animation
+=========================== */
+
+@keyframes backgroundMove{
+
+0%{
+
+transform:translateY(0) scale(1);
+
+}
+
+100%{
+
+transform:translateY(-30px) scale(1.08);
+
+}
+
 }
